@@ -3,3 +3,28 @@
   cp config/database.sample.yml config/database.yml
 
 and enter a local username and password for the database
+
+Then:
+
+  sudo gem install cucumber-rails
+  ruby script/generate cucumber --capybara
+  sudo RAILS_ENV=cucumber rake gems:install
+  sudo env RAILS_ENV=cucumber rake gems:install
+  rake db:create:all
+  rake db:migrate
+
+
+Now run the tests:
+
+  rake cucumber
+
+The result should be:
+
+  (in /Users/stephen/dev/gruyere)
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -I "/Library/Ruby/Gems/1.8/gems/cucumber-0.6.3/lib:lib" "/Library/Ruby/Gems/1.8/gems/cucumber-0.6.3/bin/cucumber"  --profile default
+  Using the default profile...
+
+
+  0 scenarios
+  0 steps
+  0m0.000s
