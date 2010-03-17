@@ -8,11 +8,9 @@ Then:
 
   sudo gem install cucumber-rails
   ruby script/generate cucumber --capybara
-  sudo RAILS_ENV=cucumber rake gems:install
   sudo env RAILS_ENV=cucumber rake gems:install
   rake db:create:all
   rake db:migrate
-
 
 Now run the tests:
 
@@ -24,7 +22,52 @@ The result should be:
   /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -I "/Library/Ruby/Gems/1.8/gems/cucumber-0.6.3/lib:lib" "/Library/Ruby/Gems/1.8/gems/cucumber-0.6.3/bin/cucumber"  --profile default
   Using the default profile...
 
-
   0 scenarios
   0 steps
   0m0.000s
+  
+Add the first cucumber feature, and an rspec_scaffold model and run the db migration:
+
+  script/generate feature post title:string body:text published:boolean
+  script/generate rspec_scaffold post title:string body:text published:boolean
+  rake db:migrate
+
+Now running the tests:
+
+  rake cucumber
+
+should generate something like this
+
+  Using the default profile...
+  Feature: Manage posts
+    In order to [goal]
+    [stakeholder]
+    wants [behaviour]
+
+    Scenario: Register new post             # features/manage_posts.feature:6
+      Given I am on the new post page       # features/step_definitions/web_steps.rb:18
+      When I fill in "Title" with "title 1" # features/step_definitions/web_steps.rb:38
+      And I fill in "Body" with "body 1"    # features/step_definitions/web_steps.rb:38
+      And I uncheck "Published"             # features/step_definitions/web_steps.rb:81
+      And I press "Create"                  # features/step_definitions/web_steps.rb:26
+      Then I should see "title 1"           # features/step_definitions/web_steps.rb:99
+      And I should see "body 1"             # features/step_definitions/web_steps.rb:99
+      And I should see "false"              # features/step_definitions/web_steps.rb:99
+
+    Scenario: Delete post                    # features/manage_posts.feature:41
+      Given the following posts:             # features/step_definitions/post_steps.rb:1
+        | title   | body   | published |
+        | title 1 | body 1 | false     |
+        | title 2 | body 2 | true      |
+        | title 3 | body 3 | false     |
+        | title 4 | body 4 | true      |
+      When I delete the 3rd post             # features/step_definitions/post_steps.rb:5
+      Then I should see the following posts: # features/step_definitions/post_steps.rb:12
+        | Title   | Body   | Published |
+        | title 1 | body 1 | false     |
+        | title 2 | body 2 | true      |
+        | title 4 | body 4 | true      |
+
+  2 scenarios (2 passed)
+  11 steps (11 passed)
+  0m0.929s
