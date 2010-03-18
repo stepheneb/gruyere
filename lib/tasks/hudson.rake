@@ -5,7 +5,7 @@ namespace :hudson do
   end
   
   if defined? Cucumber
-    Cucumber::Rake::Task.new({'cucumber'  => [:report_setup, 'db:test:prepare']}) do |t|
+    Cucumber::Rake::Task.new({'cucumber'  => [:report_setup, 'db:migrate', 'db:test:prepare']}) do |t|
       t.cucumber_opts = %{--profile default  --format junit --out #{report_path}}
     end
   end
