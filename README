@@ -4,6 +4,13 @@
 
 and enter a local username and password for the database
 
+Running under JRuby:
+
+First install the rake gem if it is not already installed.
+
+Then install the jdbc mysql set of gems by installing: activerecord-jdbcmysql-adapter
+This will also install the dependencies: activerecord-jdbc-adapter, and jdbc-mysql
+
 Then:
 
   sudo gem install cucumber-rails
