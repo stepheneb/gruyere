@@ -27,4 +27,8 @@ config.action_mailer.delivery_method = :test
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
 
+# See: http://wiki.github.com/dchelimsky/rspec/configgem-for-rails
+config.gem "rspec",          :lib => false,          :version => ">= 1.3.0" 
+config.gem "rspec-rails",    :lib => false,          :version => ">= 1.3.2"
+
 config.gem 'ci_reporter',      :lib => false
