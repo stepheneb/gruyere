@@ -11,6 +11,16 @@ First install the rake gem if it is not already installed.
 Then install the jdbc mysql set of gems by installing: activerecord-jdbcmysql-adapter
 This will also install the dependencies: activerecord-jdbc-adapter, and jdbc-mysql
 
+If the app itself required other gems you can install them like this:
+
+  jruby -S rake gems:install
+  
+The app does have gem dependencies for testing with spec 
+(the test environment) and cucumber (the cucumber environment).
+
+  RAILS_ENV=test jruby -S rake gems:install
+  RAILS_ENV=cucumber jruby -S rake gems:install
+
 Then:
 
   sudo gem install cucumber-rails
