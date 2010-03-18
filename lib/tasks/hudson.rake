@@ -1,10 +1,13 @@
 namespace :hudson do
+  
   def report_path
     "hudson/reports/features/"
   end
-
-  Cucumber::Rake::Task.new({'cucumber'  => [:report_setup, 'db:prepare']}) do |t|
-    t.cucumber_opts = %{--profile default  --format junit --out #{report_path}}
+  
+  if defined? Cucumber
+    Cucumber::Rake::Task.new({'cucumber'  => [:report_setup, 'db:prepare']}) do |t|
+      t.cucumber_opts = %{--profile default  --format junit --out #{report_path}}
+    end
   end
 
   task :report_setup do
