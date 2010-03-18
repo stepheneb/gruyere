@@ -11,6 +11,8 @@ Then:
   sudo env RAILS_ENV=cucumber rake gems:install
   rake db:create:all
   rake db:migrate
+  touch log/cucumber.log
+  chmod 0666 log/cucumber.log
 
 Now run the tests:
 
