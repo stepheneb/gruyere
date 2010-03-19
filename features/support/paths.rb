@@ -13,6 +13,9 @@ module NavigationHelpers
     when /the new post page/
       new_post_path
 
+    # When I go to the posts page
+    when /the posts page/
+      posts_path
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
