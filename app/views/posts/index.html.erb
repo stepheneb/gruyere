@@ -1,23 +1,24 @@
 <h1>Listing posts</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Published</th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%=h post.title %></td>
-    <td><%=h post.body %></td>
-    <td><%=h post.published %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<div id='posts'>
+  <% @posts.each do |post| %>
+    <div class="expandable" >
+      <div class="title">
+        <%=h post.title %>
+      </div>
+      <div class="body">
+        <%=h post.body %>
+        <table>
+          <td><%=h post.published %></td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+        </table>
+      
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br />
 
