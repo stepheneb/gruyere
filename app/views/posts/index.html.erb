@@ -7,15 +7,14 @@
         <%=h post.title %>
       </div>
       <div class="body">
-        <%=h post.body %>
-        <table>
-          <td><%=h post.published %></td>
-          <td><%= link_to 'Show', post %></td>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-        </table>
-      
+        <%=h post.body %>      
       </div>
+      <table>
+        <td><%=h post.published %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+      </table>
     </div>
   <% end %>
 </div>
