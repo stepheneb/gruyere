@@ -1,18 +1,19 @@
-Feature: Display posts
-  In order to look at the cool ideas
-  Henry
-  wants to view blog entries on the web
+Feature: Browsing Posts
+  In order to look the interesting blog posts
+  As a reader
+  I want to see the content for the blog posts I find interesting
   
-  Scenario: Listing posts
+  @javascript
+  Scenario: Listing existing posts
     Given the following posts:
       |title|body|published|
-      |title 1|body 1|false|
+      |title x|body x|false|
       |title 2|body 2|true|
       |title 3|body 3|false|
       |title 4|body 4|true|
-    when I go to the posts page
-    then I can see the post titles
-    and I can't see the post bodies
+    When I am on the posts page
+    Then I should see "title 1" on the screen within "#posts"
+    And I should not see "abcdefg"
 
 #   When I click on "Title" of the first post
 #   then I should see the body of "body 1"
