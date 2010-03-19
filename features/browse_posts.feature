@@ -7,13 +7,13 @@ Feature: Browsing Posts
   Scenario: Listing existing posts
     Given the following posts:
       |title|body|published|
-      |title x|body x|false|
+      |title 1|body 1|false|
       |title 2|body 2|true|
       |title 3|body 3|false|
       |title 4|body 4|true|
     When I am on the posts page
     Then I should see "title 1" on the screen within "#posts"
-    And I should not see "abcdefg"
+    And I should not see "body 1" on the screen within "#posts"
 
 #   When I click on "Title" of the first post
 #   then I should see the body of "body 1"

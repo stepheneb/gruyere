@@ -10,9 +10,15 @@
 
 Then /^(?:|I )should see "([^\"]*)" on the screen(?: within "([^\"]*)")?$/ do |text, selector|
   with_scope(selector) do
-    debugger
-    page.find(:xpath, "//text('#{text}')")
-    assert page.has_content?(text)
+    # debugger
+    assert page.find(:xpath, "//*[contains(text(), '#{text}')]").visible?
+  end
+end
+
+Then /^(?:|I )should not see "([^\"]*)" on the screen(?: within "([^\"]*)")?$/ do |text, selector|
+  with_scope(selector) do
+    # debugger
+    assert !page.find(:xpath, "//*[contains(text(), '#{text}')]").visible?
   end
 end
 
