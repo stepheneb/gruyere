@@ -44,9 +44,9 @@ Feature: Manage posts
       |title 2|body 2|true|
       |title 3|body 3|false|
       |title 4|body 4|true|
-    When I delete the 3rd post
+    When I am on the posts page
+    And I delete the 3rd post
     Then I should see the following posts:
-      |Title|Body|Published|
-      |title 1|body 1|false|
-      |title 2|body 2|true|
-      |title 4|body 4|true|
+      |title 1|body 1|
+      |title 2|body 2|
+      |title 4|body 4|
