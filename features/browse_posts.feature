@@ -15,8 +15,8 @@ Feature: Browsing Posts
     Then I should see "title 1" on the screen within "#posts"
     And I should not see "body 1" on the screen within "#posts"
 
-#   When I click on "Title" of the first post
-#   then I should see the body of "body 1"
+    When I click on "title" of the 1st post
+    Then I should see "body 1" on the screen within "#posts"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).
