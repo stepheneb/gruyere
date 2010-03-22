@@ -19,7 +19,7 @@ namespace :hudson do
 
   namespace :setup do
     task :pre_ci do
-      ENV["CI_REPORTS"] = 'hudson/reports/spec/'
+      ENV["CI_REPORTS"] = report_path
       gem 'ci_reporter'
       require 'ci/reporter/rake/rspec'
     end

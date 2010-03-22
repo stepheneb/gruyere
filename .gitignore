@@ -3,3 +3,4 @@ config/database.yml
 log/*.log
 db/*.sqlite*
 rerun.txt
+tmp/*

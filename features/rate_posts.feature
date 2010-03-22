@@ -14,3 +14,14 @@ Feature: Rate Posts
     When I am on the posts page
     Then I should see a rating of 5 on the 3rd post
 
+  Scenario: I 'like' post 3 and increase its rating
+    Given the following posts:
+      |title  |body  |published|rating|
+      |title 1|body 1|false    |0     |
+      |title 2|body 2|true     |-1    |
+      |title 3|body 3|false    |5     |
+      |title 4|body 4|true     |9     |
+
+    When I am on the posts page
+    And I click on "like this" of the 3rd post
+    Then _PENDING_ I should see a rating of 6 on the 3rd post
