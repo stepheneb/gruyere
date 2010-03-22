@@ -10,8 +10,12 @@
         <%=h post.body %>      
       </div>
       <dl class="rating">
-        <dd>Rating</dd>
-        <dt><%=h post.rating %></dt>
+        <dd>
+          Rating
+          <!-- see app/helpers/posts_helper.rb -->  
+          <%= like_tag post %> 
+        </dd>
+        <dt><%=h post.rating %> </dt> 
       </dl>
       <table>
         <tr>
